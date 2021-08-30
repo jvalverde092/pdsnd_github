@@ -6,6 +6,28 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+def filter_month():
+    month = None
+    bool_good_option = False
+    while(not(bool_good_option)):
+        month = (input('Choone one month option : (january, february, march, april, may, june)\n')).lower()
+        if month not in ['january', 'february', 'march', 'april', 'may', 'june']:
+            print("Incorrec option, choose again\n")
+        else:
+            bool_good_option = True
+    return month
+
+def filter_day():
+    day = None
+    bool_good_option = False
+    while(not(bool_good_option)):
+        day = (input('Choone one day-of-week option : (monday, tuesday, wednesday, thursday, friday, saturday, sunday)\n')).lower()
+        if day not in ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
+            print("Incorrec option, choose again\n")
+        else:
+            bool_good_option = True
+    return day
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -16,17 +38,39 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-
-
-    # get user input for month (all, january, february, ... , june)
-
-
-    # get user input for day of week (all, monday, tuesday, ... sunday)
-
-
-    print('-'*40)
-    return city, month, day
+    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+    city = None
+    bool_good_option = False
+    while(not(bool_good_option)):
+        city = (input('Whould you like to see data for : (chicago, new york city, washington)?\n')).lower()
+        if city not in ['chicago', 'new york city', 'washington']:
+            print("Incorrec option, choose again\n")
+        else:
+            bool_good_option = True
+            
+    filter_month_year = None       
+    bool_filter_month_day = False
+    while(not(bool_filter_month_day)):
+        filter_month_day = (input('Whould you like to filter the data by month, day, both or not at all? Type "none" for no time filter\n')).lower()
+        if filter_month_day not in ['month', 'day', 'both', 'none']:
+            print("Incorrec option, choose again\n")
+        else:
+            bool_filter_month_day = True    
+    
+    if filter_month_day == 'none':
+        print('-'*40)
+        return city, 'all', 'all'
+    else:
+        month = 'all'
+        day = 'all'
+        if filter_month_day == 'month' or filter_month_day == 'both':
+            # TO DO: get user input for month (all, january, february, ... , june)
+            month = filter_month()
+        if filter_month_day == 'day' or filter_month_day == 'both':
+            # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
+            day = filter_day()
+        print('-'*40)
+        return city, month, day
 
 
 def load_data(city, month, day):

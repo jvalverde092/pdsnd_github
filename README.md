@@ -1,3 +1,11 @@
+## BIKESHARE PROJECT
+This project consist in make a program that can show statistics about the use of a bike in 3 cities:
+* Chicago
+* New York
+* Washington
+
+In the file *bikeshare_2.py* you can find the python program to do this project.
+
 >**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
 
 ### Date created
